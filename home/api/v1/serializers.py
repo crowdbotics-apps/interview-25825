@@ -10,6 +10,7 @@ from rest_framework import serializers
 from rest_auth.serializers import PasswordResetSerializer
 
 from home.models import CustomText, HomePage
+from home.api.models import App
 
 User = get_user_model()
 
@@ -87,3 +88,13 @@ class UserSerializer(serializers.ModelSerializer):
 class PasswordSerializer(PasswordResetSerializer):
     """Custom serializer for rest_auth to solve reset password error"""
     password_reset_form_class = ResetPasswordForm
+
+
+class AppsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = App
+        # fields = ['id', 'name', 'description', 'type', 'framework', 'domain_name', 'screenshot', 'subscription']
+        fields = '__all__'
+
+    # TODO Figure out how to make the app user as the one making the request
