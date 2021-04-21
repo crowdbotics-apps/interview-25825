@@ -11,6 +11,7 @@ from home.api.v1.serializers import (
     HomePageSerializer,
     UserSerializer,
     AppsSerializer,
+    AppsOneSerializer,
 )
 from home.models import CustomText, HomePage
 from home.api.models import App
@@ -61,7 +62,16 @@ class AppsAllViewSet(ModelViewSet):
     def get_queryset(self):
         return App.objects.filter(User=self.request.user)
 
-
     http_method_names = ["get", "post"]
 
+
+class AppsViewOneSet(ModelViewSet):
+    serializer_class = AppsOneSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'id'
+
+    def get_queryset(self):
+        return App.objects.filter(User=self.request.user)
+
+    http_method_names = ["get"]
 

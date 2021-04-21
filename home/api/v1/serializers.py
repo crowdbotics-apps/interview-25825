@@ -98,3 +98,11 @@ class AppsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     # TODO Figure out how to make the app user as the one making the request
+
+
+class AppsOneSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = App
+        fields = '__all__'
+        lookup_field = 'id'
