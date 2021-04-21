@@ -51,6 +51,7 @@ LOCAL_APPS = [
     'home',
     'modules',
     'users.apps.UsersConfig',
+    'home.api'
 ]
 THIRD_PARTY_APPS = [
     'rest_framework',
