@@ -9,6 +9,7 @@ from home.api.v1.viewsets import (
     AppsAllViewSet,
     AppsViewOneSet,
     PlansViewSet,
+    SubscriptionViewSet,
 )
 
 router = DefaultRouter()
@@ -20,6 +21,7 @@ router.register("apps", AppsAllViewSet, basename="apps")
 # TODO change url path to match docs
 router.register("apps_id", AppsViewOneSet, basename="apps_id")
 router.register("plans", PlansViewSet, basename="plans")
+router.register("subscriptions", SubscriptionViewSet, basename="subscriptions")
 
 urlpatterns = [
     path("", include(router.urls)),

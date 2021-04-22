@@ -10,7 +10,7 @@ from rest_framework import serializers
 from rest_auth.serializers import PasswordResetSerializer
 
 from home.models import CustomText, HomePage
-from home.api.models import App, Plan
+from home.api.models import App, Plan, Subscription
 
 User = get_user_model()
 
@@ -111,5 +111,12 @@ class AppsOneSerializer(serializers.ModelSerializer):
 class PlansSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plan
+        fields = '__all__'
+        lookup_field = 'id'
+
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscription
         fields = '__all__'
         lookup_field = 'id'

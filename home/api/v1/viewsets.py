@@ -13,9 +13,10 @@ from home.api.v1.serializers import (
     AppsSerializer,
     AppsOneSerializer,
     PlansSerializer,
+    SubscriptionSerializer,
 )
 from home.models import CustomText, HomePage
-from home.api.models import App, Plan
+from home.api.models import App, Plan, Subscription
 
 
 class SignupViewSet(ModelViewSet):
@@ -83,4 +84,15 @@ class PlansViewSet(ModelViewSet):
     queryset = Plan.objects.all()
 
     http_method_names = ["get"]
+
+
+class SubscriptionViewSet(ModelViewSet):
+    serializer_class = SubscriptionSerializer
+    lookup_field = 'id'
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Subscription.objects.filter(User=self.request.user)
+
+    http_method_names = ["get", "post", "put", "patch"]
 
