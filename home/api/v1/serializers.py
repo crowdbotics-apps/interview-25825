@@ -93,6 +93,7 @@ class PasswordSerializer(PasswordResetSerializer):
 class AppsSerializer(serializers.ModelSerializer):
 
     class Meta:
+        lookup_field = 'id'
         model = App
         # fields = ['id', 'name', 'description', 'type', 'framework', 'domain_name', 'screenshot', 'subscription']
         fields = '__all__'

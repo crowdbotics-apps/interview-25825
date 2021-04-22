@@ -60,22 +60,12 @@ class AppsAllViewSet(ModelViewSet):
     serializer_class = AppsSerializer
     authentication_classes = (SessionAuthentication, TokenAuthentication)
     permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        return App.objects.filter(User=self.request.user)
-
-    http_method_names = ["get", "post"]
-
-
-class AppsViewOneSet(ModelViewSet):
-    serializer_class = AppsOneSerializer
-    permission_classes = [IsAuthenticated]
     lookup_field = 'id'
 
     def get_queryset(self):
-        return App.objects.filter(User=self.request.user)
+        return App.objects.filter(user=self.request.user)
 
-    http_method_names = ["get", "put", "patch", "delete"]
+    http_method_names = ["get", "post", "put", "patch", "delete"]
 
 
 class PlansViewSet(ModelViewSet):

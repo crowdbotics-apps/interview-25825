@@ -7,7 +7,6 @@ from home.api.v1.viewsets import (
     HomePageViewSet,
     CustomTextViewSet,
     AppsAllViewSet,
-    AppsViewOneSet,
     PlansViewSet,
     SubscriptionViewSet,
 )
@@ -18,8 +17,6 @@ router.register("login", LoginViewSet, basename="login")
 router.register("customtext", CustomTextViewSet)
 router.register("homepage", HomePageViewSet)
 router.register("apps", AppsAllViewSet, basename="apps")
-# TODO change url path to match docs
-router.register("apps_id", AppsViewOneSet, basename="apps_id")
 router.register("plans", PlansViewSet, basename="plans")
 router.register("subscriptions", SubscriptionViewSet, basename="subscriptions")
 
