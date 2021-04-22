@@ -73,5 +73,5 @@ class AppsViewOneSet(ModelViewSet):
     def get_queryset(self):
         return App.objects.filter(User=self.request.user)
 
-    http_method_names = ["get"]
+    http_method_names = ["get", "put", "patch", "delete"]
 
