@@ -12,9 +12,10 @@ from home.api.v1.serializers import (
     UserSerializer,
     AppsSerializer,
     AppsOneSerializer,
+    PlansSerializer,
 )
 from home.models import CustomText, HomePage
-from home.api.models import App
+from home.api.models import App, Plan
 
 
 class SignupViewSet(ModelViewSet):
@@ -74,4 +75,12 @@ class AppsViewOneSet(ModelViewSet):
         return App.objects.filter(User=self.request.user)
 
     http_method_names = ["get", "put", "patch", "delete"]
+
+
+class PlansViewSet(ModelViewSet):
+    serializer_class = PlansSerializer
+    lookup_field = 'id'
+    queryset = Plan.objects.all()
+
+    http_method_names = ["get"]
 

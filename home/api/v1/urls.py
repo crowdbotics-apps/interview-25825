@@ -8,6 +8,7 @@ from home.api.v1.viewsets import (
     CustomTextViewSet,
     AppsAllViewSet,
     AppsViewOneSet,
+    PlansViewSet,
 )
 
 router = DefaultRouter()
@@ -16,7 +17,9 @@ router.register("login", LoginViewSet, basename="login")
 router.register("customtext", CustomTextViewSet)
 router.register("homepage", HomePageViewSet)
 router.register("apps", AppsAllViewSet, basename="apps")
+# TODO change url path to match docs
 router.register("apps_id", AppsViewOneSet, basename="apps_id")
+router.register("plans", PlansViewSet, basename="plans")
 
 urlpatterns = [
     path("", include(router.urls)),
