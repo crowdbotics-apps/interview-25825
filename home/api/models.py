@@ -27,6 +27,9 @@ class App(models.Model):
     created_at = models.DateTimeField(name="Created at", auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(name="Updated at", auto_now=True, null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Plan(models.Model):
     name = models.CharField(name="Name", max_length=20, null=True, blank=True)
@@ -35,6 +38,9 @@ class Plan(models.Model):
     created_at = models.DateTimeField(name="Created at", auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(name="Updated at", auto_now=True, null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Subscription(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, name="User", on_delete=models.CASCADE, null=True, blank=True)
@@ -42,5 +48,6 @@ class Subscription(models.Model):
     app = models.ForeignKey("App", name="App", on_delete=models.CASCADE, null=True, blank=True)
     active = models.BooleanField(name="Active", default=True)
 
-
+    def __str__(self):
+        return "{}-{}".format(self.plan.name, self.active)
 
